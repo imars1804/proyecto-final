@@ -1,0 +1,106 @@
+@import "gridqueries";
+
+$color-fondo-sitio: rgb(221, 217, 217);
+$color-fondo-nav: rgb(110, 17, 17);
+$color-btn: rgb(134, 126, 126);
+
+//Mixin
+
+@mixin flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+//Extend
+
+%botones{
+    border-radius: 1rem;
+    background-color: $color-fondo-nav;
+    text-align: center;
+    color: $color-fondo-sitio;
+}
+
+//Maps
+
+$estilos: (
+    h1: 4rem,
+    r2: 2rem,
+    centro: center,
+);
+
+$h1: map-get($estilos, h1);
+$r2: map-get($estilos, r2);
+$centro: map-get($estilos, centro);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Dosis', sans-serif;
+    background-color: $color-fondo-sitio;
+    .container-fluid{
+        --bs-gutter-x: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    div{
+        header{
+            nav{
+                div{
+                    .navbar-brand{
+                        img{
+                            width: 250px;
+                            height: auto;
+                            margin: 0;
+                            padding: 0;
+                            display: block;
+                        }
+                    }
+
+                    ul{
+                        li{
+                            a:hover{
+                                font-size: 20px;
+                            }
+
+                            a{
+                                @extend %botones;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        h1:hover{
+            color: $color-fondo-nav;
+        }
+
+        h1{
+            font-size: $h1;
+            padding: 1rem;
+            text-align: $centro;
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+
+        .subTitulo{
+            padding: .5rem;
+            text-align: $centro;
+            color: $color-btn;
+            font-size: 20px;
+        }
+        
+        footer{
+            p{
+                text-align: left;
+            }
+        }
+    }
+}
+
